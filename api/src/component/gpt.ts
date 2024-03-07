@@ -24,34 +24,34 @@ const gpt = async (req: Request, res: Response, next: NextFunction) => {
       messages: [
         {
           role: "user",
-          content: `forget about all the previous conversations and contexts,
-          write a python code snippet using Diagrams library to create a high level system diagram based on the following information:
+          content: `you are a senior solution architect, please write a python code snippet using Diagrams library to create a high level system diagram based on the following information:
           - the users of the system are: ${request.users}
           - the functional requirements of the system are: ${request.functionalReq}
           - the nonfunctional requirements are: ${request.nonfunctionalReq}
           - In addition, please note that: ${request.other}
-          - The python code should produce a single diagram
-          - Only import the following:
-          from diagrams import Diagram, Cluster
-          from diagrams.onprem.client import Client, User
-          from diagrams.aws.blockchain import BlockchainResource,Blockchain
-          from diagrams.aws.compute import EC2, Lambda
-          from diagrams.aws.database import Database
-          from diagrams.aws.storage import SimpleStorageServiceS3Bucket
 
-          Do not include any shell script in the answer.
-          If you can't provide the code, please explain why.
+          Make sure to apply the following restrictions and don't skip any of them:
+          - Only return python code, and nothing else. Output with no introduction, no explanation, only code.
+          - The python code should have exactly one Diagram() statement with name="High Level System Diagram" and show=False.
+          - Only import the following modules:
+            from diagrams import Diagram, Cluster
+            from diagrams.onprem.client import Client, User
+            from diagrams.aws.blockchain import BlockchainResource,Blockchain
+            from diagrams.aws.compute import EC2, Lambda
+            from diagrams.aws.database import Database
+            from diagrams.aws.storage import SimpleStorageServiceS3Bucket
+          - If you can't provide the code, please start the answer with "I'm sorry" and explain why.
           `,
         },
       ],
       model: "gpt-4",
     });
     const answer = chatCompletion.choices[0].message.content;
-    const code = answer?.match(/```(.)ython\n((.|\n)*)```/); // extract the python code
-    if (code) {
-      const diagramUrl = pythonrunner(code[2]);
+    // const code = answer?.match(/```(.)ython\n((.|\n)*)```/); // extract the python code
+    if (answer && !answer.startsWith("I'm sorry")) {
+      const diagramUrl = pythonrunner(answer);
       res.status(httpStatus.OK);
-      res.send({ status: "OK", diagramUrl, code: code[2] });
+      res.send({ status: "OK", diagramUrl });
     } else {
       // if no code is provided, return the answer which should explain the reason
       res.status(httpStatus.OK);
