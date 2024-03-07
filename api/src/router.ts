@@ -1,10 +1,8 @@
 import { Router } from "express";
-import gpt from "./component/gpt";
-import pythonrunner from "./component/pythonrunner";
+import sysdesign from "./component/sysdesign";
 
 const router: Router = Router();
 
-router.post("/gpt", gpt);
-router.post("/pythonrunner", pythonrunner);
+router.post("/sysdesign", sysdesign);
 
 export default router;

@@ -11,13 +11,13 @@ const openai = new OpenAI({
 });
 
 interface IRequest {
-  users: string;
-  functionalReq: string;
-  nonfunctionalReq: string;
-  other: string;
+  users: string; // users of the system
+  functionalReq: string; // functional requirements of the system
+  nonfunctionalReq: string; // nonfunctional requirements
+  other: string; // other considerations
 }
 
-const gpt = async (req: Request, res: Response, next: NextFunction) => {
+const sysdesign = async (req: Request, res: Response, next: NextFunction) => {
   const request = req.body as IRequest;
   try {
     const chatCompletion = await openai.chat.completions.create({
@@ -55,11 +55,11 @@ const gpt = async (req: Request, res: Response, next: NextFunction) => {
     } else {
       // if no code is provided, return the answer which should explain the reason
       res.status(httpStatus.OK);
-      res.send({ status: "OK", answer });
+      res.send({ status: "REFUSED", answer });
     }
   } catch (err) {
     next(err);
   }
 };
 
-export default gpt;
+export default sysdesign;
