@@ -34,3 +34,12 @@ or
 ## How it works
 
 Upon receiving a request, the endpoint interfaces with the ChatGPT API to retrieve Python code for drawing the system diagram. Subsequently, it initiates a shell process to execute the Python code. Finally, the resulting diagram is uploaded to Amazon S3.
+
+## Development
+
+Node version: v18.16.0
+
+```sh
+npm install
+npm run dev
+```
