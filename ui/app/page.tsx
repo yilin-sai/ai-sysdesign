@@ -9,6 +9,8 @@ import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import { getSysDesign } from "./lib/api";
 import { AxiosError } from "axios";
+import useLoading from "./lib/useLoading";
+import { CircularProgress } from "@mui/material";
 
 export default function Home() {
   const [diagramUrl, setDiagramUrl] = useState();
@@ -20,6 +22,7 @@ export default function Home() {
     title: "",
     message: "",
   });
+  const [loading, withLoading] = useLoading();
 
   async function generateDiagram(e: FormEvent) {
     e.preventDefault();
@@ -62,7 +65,7 @@ export default function Home() {
           </h1>
         </div>
         <div>
-          <form onSubmit={generateDiagram}>
+          <form onSubmit={(e) => withLoading(generateDiagram(e))}>
             <div className="space-y-12">
               <div className="pb-12">
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -147,6 +150,7 @@ export default function Home() {
               </button>
               <button
                 type="submit"
+                disabled={loading}
                 className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Generate
@@ -155,7 +159,11 @@ export default function Home() {
           </form>
         </div>
       </div>
-      <div className="basis-3/5 p-8">
+      <div
+        className={clsx("basis-3/5 p-8", {
+          hidden: loading,
+        })}
+      >
         <div
           className={clsx("flex items-center justify-center", {
             hidden: diagramUrl === undefined,
@@ -170,11 +178,31 @@ export default function Home() {
         >
           <div style={{ height: "40vh" }}></div>
           <div>
-            <Alert severity="error">
-              <AlertTitle>{err.title}</AlertTitle>
-              {err.message}
-            </Alert>
+            {err.title !== "" ? (
+              <Alert severity="error">
+                <AlertTitle>{err.title}</AlertTitle>
+                {err.message}
+              </Alert>
+            ) : (
+              <Alert variant="filled" severity="info">
+                Your system diagram will be shown here.
+              </Alert>
+            )}
           </div>
+        </div>
+      </div>
+      <div
+        className={clsx("basis-3/5 p-8 flex items-center justify-center", {
+          hidden: !loading,
+        })}
+      >
+        <div>
+          <CircularProgress
+            size={48}
+            sx={{
+              color: "primary",
+            }}
+          />
         </div>
       </div>
     </main>
