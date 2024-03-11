@@ -3,7 +3,6 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { inter } from "./fonts";
 import clsx from "clsx";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
@@ -55,12 +54,10 @@ export default function Home() {
   }
 
   return (
-    <main className="flex flex-row min-h-screen">
+    <main className="flex flex-col min-h-screen md:flex-row">
       <div className="flex flex-col basis-2/5 p-8 bg-white">
         <div className="flex items-center min-h-24">
-          <h1
-            className={`${inter.className} antialiased text-2xl font-semibold`}
-          >
+          <h1 className={`text-2xl font-medium`}>
             Generate Your System Architecture
           </h1>
         </div>
@@ -189,6 +186,7 @@ export default function Home() {
               </Alert>
             )}
           </div>
+          <div style={{ height: "40vh" }}></div>
         </div>
       </div>
       <div
