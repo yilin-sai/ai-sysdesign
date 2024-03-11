@@ -57,9 +57,9 @@ export default function Home() {
     <main className="flex flex-col min-h-screen md:flex-row">
       <div className="flex flex-col basis-2/5 p-8 bg-white">
         <div className="flex items-center min-h-24">
-          <h1 className={`text-2xl font-medium`}>
+          <p className={`text-2xl font-medium`}>
             Generate Your System Architecture
-          </h1>
+          </p>
         </div>
         <div>
           <form onSubmit={(e) => withLoading(generateDiagram(e))}>
