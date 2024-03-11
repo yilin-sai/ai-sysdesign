@@ -57,13 +57,9 @@ export default function Home() {
   return (
     <main className="flex flex-col min-h-screen md:flex-row">
       <a href="https://github.com/yilin-sai/ai-sysdesign">
-        <Image
-          src="/github.png"
-          width={100}
-          height={100}
-          alt="github"
-          className="absolute top-4 right-4"
-        />
+        <div className="absolute w-12 h-12 md:w-20 md:h-20 top-4 right-4">
+          <Image src="/github.png" fill alt="github" />
+        </div>
       </a>
       <div className="flex flex-col basis-2/5 p-8 bg-white">
         <div className="flex items-center min-h-24">
