@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AI System Design",
+  title: "AI Generated System Design",
   description: "Create system design diagrams with AI",
 };
 
