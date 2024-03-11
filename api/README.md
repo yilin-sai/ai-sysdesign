@@ -37,7 +37,18 @@ Upon receiving a request, the endpoint interfaces with the ChatGPT API to retrie
 
 ## Development
 
-Node version: v18.16.0
+### Prerequisites
+
+The API requires:
+
+- Node version: v18.16.0
+- Python 3
+- Graphviz
+- AWS CLI
+
+The neccessary python libraries are listed in `py-requirements.txt`. The script to set up an EC2 (Ubuntu) with the necessary environment is `ec2-setup.sh`.
+
+After installing the prerequisites:
 
 ```sh
 npm install
