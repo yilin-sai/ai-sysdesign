@@ -2,7 +2,7 @@
 
 Hi! This is one of my personal projects to build a system design tool enpowered by AI.
 
-Just describe your system's functional and non-functional requirements, you can obtain a ~~high quality~~ AI generated system architecture diagram right away. Try it out [here](www.ai-sysdesign.com/)!
+Just describe your system's functional and non-functional requirements, you can obtain a ~~high quality~~ AI generated system architecture diagram right away. Try it out [here](https://www.ai-sysdesign.com/)!
 
 ## How it works
 
