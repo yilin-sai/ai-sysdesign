@@ -10,6 +10,7 @@ import { getSysDesign } from "./lib/api";
 import { AxiosError } from "axios";
 import useLoading from "./lib/useLoading";
 import { CircularProgress } from "@mui/material";
+import Image from "next/image";
 
 export default function Home() {
   const [diagramUrl, setDiagramUrl] = useState();
@@ -55,10 +56,26 @@ export default function Home() {
 
   return (
     <main className="flex flex-col min-h-screen md:flex-row">
+      <a href="https://github.com/yilin-sai/ai-sysdesign">
+        <Image
+          src="/github.png"
+          width={100}
+          height={100}
+          alt="github"
+          className="absolute top-4 right-4"
+        />
+      </a>
       <div className="flex flex-col basis-2/5 p-8 bg-white">
         <div className="flex items-center min-h-24">
-          <p className={`text-2xl font-medium`}>
+          <p className={`text-2xl font-medium text-gray-900`}>
             Generate Your System Architecture
+          </p>
+        </div>
+        <div className="flex items-center min-h-8">
+          <p className="font-light text-gray-400">
+            {
+              "Describe your system's users, functional and non-functional requirements to obtain an AI generated system architecture diagram."
+            }
           </p>
         </div>
         <div>
