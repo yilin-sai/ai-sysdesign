@@ -37,6 +37,6 @@ Needs to take into account different failure reasons, each needs to be addressed
 - ChatGPT refuses to provide code with good reason.
 - Other errors like network errors, quota limit, etc.
 
-## Optimisations
+## Contribution
 
 If you have a better way to do things or want to add some new features, contributions to this repo are very welcomed!
