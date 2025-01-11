@@ -17,6 +17,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   res.status(500).send(err.stack);
 });
 
-app.listen(port, () => {
-  console.log(`Server is Fire at http://localhost:${port}`);
+app.listen(port, '::', () => {
+  console.log(`Server is Fire at http://[::]:${port}`);
 });
