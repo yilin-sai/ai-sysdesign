@@ -1,0 +1,31 @@
+# Ignore node_modules
+node_modules/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore logs
+*.log
+
+# Ignore OS files
+.DS_Store
+
+# Ignore git
+.git
+.gitignore
+
+# Ignore Docker files
+Dockerfile
+docker-compose.yml
+
+ec2-setup.sh
+# Ignore test and temp files
+*.swp
+*.tmp
+*.bak
+
+# Ignore VSCode settings
+.vscode/

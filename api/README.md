@@ -13,6 +13,19 @@ Request:
 }
 ```
 
+Request Example:
+
+```bash
+curl -X POST http://localhost:8000/sysdesign \
+  -H "Content-Type: application/json" \
+  -d '{
+    "users": "Photographers",
+    "functionalReq": "Allow users to upload and share images",
+    "nonfunctionalReq": "High availability, scalable storage",
+    "other": "Integrate with third-party authentication"
+  }'
+```
+
 Response:
 
 ```javascript

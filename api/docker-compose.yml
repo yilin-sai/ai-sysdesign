@@ -1,0 +1,11 @@
+services:
+  ai-sysdesign:
+    build:
+      context: .
+      pull: true
+    container_name: ai-sysdesign-service
+    working_dir: /app
+    tty: true
+    # Uncomment and set ports if your service exposes any
+    # ports:
+    #   - "3000:3000"
